@@ -35,6 +35,9 @@ public class ClienteDAO1 {
             stmt = (PreparedStatement) con.createStatement();
             
             stmt.executeUpdate(sql1);
+            if(true){
+                throw new SQLException();
+            }
             stmt.executeUpdate(sql2);
             if(true){
                 throw new SQLException();

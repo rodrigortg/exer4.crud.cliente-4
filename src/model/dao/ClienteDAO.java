@@ -35,14 +35,27 @@ public class ClienteDAO {
             stmt.setString(4, cliente.getTelefone());
             stmt.setString(5, cliente.getDataaniversario());
             
+            con.setAutoCommit(false);
+            
+             if(true){
+                throw new SQLException();
+            }
+            
             stmt.executeUpdate();
+            
+            con.commit();     
             
             JOptionPane.showMessageDialog(null, "Salvo com sucesso!");
             
         }catch (SQLException ex){
             JOptionPane.showMessageDialog(null, "Erro ao salvar: " + ex);
             java.util.logging.Logger.getLogger(ClienteDAO.class.getName()).log(Level.SEVERE, null, ex);
-            
+             try{
+                con.rollback();
+            }catch (SQLException ex1){
+                System.out.println("Erro Ao Salvar!!!");
+                //System.out.println("Comentário realizado no repositório remoto git!!!");
+            }
         }finally{
          ConnectionFactory.closeConnection(con,stmt);
         }
