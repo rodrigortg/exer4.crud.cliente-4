@@ -42,7 +42,6 @@ public class ClienteDAO {
             }
             
             stmt.executeUpdate();
-            
             con.commit();     
             
             JOptionPane.showMessageDialog(null, "Salvo com sucesso!");
